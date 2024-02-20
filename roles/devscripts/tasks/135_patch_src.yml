@@ -21,6 +21,13 @@
     src: proxy.patch
     dest: "{{ cifmw_devscripts_repo_dir }}/02_configure_host.sh"
 
+- name: Patch  yq command
+  tags:
+    - bootstrap
+  ansible.posix.patch:
+    src: yq.patch
+    dest: "{{ cifmw_devscripts_repo_dir }}/01_install_requirements.sh"
+
 - name: Read the vm_setup_vars contents.
   ansible.builtin.slurp:
     src: "{{ cifmw_devscripts_repo_dir }}/vm_setup_vars.yml"
